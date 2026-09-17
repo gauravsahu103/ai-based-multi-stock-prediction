@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data
+data/raw/
+data/processed/
+data/features/
+data/targets/
+data/predictions/
+data/backtests/
+
+# ML models
+models/
+*.pkl
+*.pickle
+*.joblib
+*.onnx
+
+# Logs
+logs/
+*.log
+
+# Streamlit
+.streamlit/
+
+# OS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+
+# Temporary
+*.tmp
+*.temp
