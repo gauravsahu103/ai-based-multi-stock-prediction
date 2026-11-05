@@ -670,7 +670,11 @@ Observed note: `99` valid missing row(s), that are correct as marked NA flagged 
 - `python -m src.models.day1.baseline_train`
 - `python -m src.models.day1.train_xgboost_baseline`
 
-Result is very weak 
+### Baseline Result Summary (Step 2.2)
+
+Result was weak.
+
+```text
 ==========================================================================================
 DAY-1 XGBOOST BASELINE
 STEP 2.2 — CLEAN REPRODUCIBLE BASELINE TRAINING
@@ -681,7 +685,7 @@ DATA
 Train rows      : 78,194
 Validation rows : 17,283
 E0 feature count: 90
-Config           : config/day1.yaml
+Config          : config/day1.yaml
 
 REGRESSION — VALIDATION
 ------------------------------------------------------------------------------------------
@@ -716,16 +720,20 @@ BASELINE BOUNDARY
 ------------------------------------------------------------------------------------------
 No hyperparameter tuning, calibration, test evaluation, or test-driven
 feature decisions are performed in Step 2.2.
+```
 
-Next 
-- Executed feature experimental - Project % python -m src.models.day1.run_feature_ablation_experiments
-to freeze the feature - not done
+### Next Actions (Recorded)
 
-create da1_tunning.yaml
-and tune_xgboost_hyperparameters.py 
+- Executed feature experiment command:
+    - `python -m src.models.day1.run_feature_ablation_experiments`
+- Feature freeze decision: not finalized.
+- Created tuning config/script plan:
+    - `config/day1_tuning.yaml`
+    - `tune_xgboost_hyperparameters.py`
 
-E0 and TUNE_012 on matching stocks and dates, checking regression errors, daily Spearman correlation, Top-5/10/20 returns, and hit rates.
+Comparison objective (recorded): compare E0 and TUNE_012 on matching stocks/dates using regression errors, daily Spearman, Top-5/10/20 returns, and hit rates.
 
+```bash
 python - <<'PY'
 from pathlib import Path
 
@@ -964,14 +972,18 @@ for k in [5, 10, 20]:
 print("\nNo project files were written or modified.")
 print("Final test dataset was not loaded.")
 PY
+```
 
-now 
-paired 95% confidence intervals for the daily metric differences
+Next note: paired 95% confidence intervals for daily metric differences.
 
-then chnage in tune_xgboost_hyperparameters.py
-day1_tune.yaml
+Then changed:
 
-then 
+- `tune_xgboost_hyperparameters.py`
+- `config/day1_tuning.yaml`
+
+Then:
+
+```bash
 python - <<'PY'
 from pathlib import Path
 import json
@@ -1027,8 +1039,11 @@ print(report_path.read_text())
 
 print("\nTest dataset loaded: NO")
 PY
+```
 
-next review the existing feature experiments
+Next review of existing feature experiments:
+
+```bash
 python - <<'PY'
 from pathlib import Path
 import pandas as pd
@@ -1056,6 +1071,7 @@ for name in [
 
 print("\nRead-only inspection complete. Test data was not loaded.")
 PY
+```
 
 ### Next Step (Recorded)
 
