@@ -1073,7 +1073,3 @@ print("\nRead-only inspection complete. Test data was not loaded.")
 PY
 ```
 
-### Next Step (Recorded)
-
-- Hyperparameter tuning.
-- Use the test dataset only for final decisions.
