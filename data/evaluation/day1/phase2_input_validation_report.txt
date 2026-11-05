@@ -1,0 +1,132 @@
+==========================================================================================
+PHASE 2 — DAY-1 XGBOOST BASELINE
+STEP 2.1 — INPUT VALIDATION + E0 FEATURE INVENTORY
+==========================================================================================
+
+INPUT FILES
+------------------------------------------------------------------------------------------
+Train      : /Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/data/processed/modeling/day1/train.parquet
+Validation : /Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/data/processed/modeling/day1/validation.parquet
+Test       : /Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/data/processed/modeling/day1/test.parquet
+
+DATASET SIZES
+------------------------------------------------------------------------------------------
+Train rows      : 78,194
+Validation rows : 17,283
+Test rows       : 17,670
+
+TARGETS
+------------------------------------------------------------------------------------------
+Regression target    : target_return_1d
+Classification target: target_direction_1d
+
+E0 FEATURE INVENTORY
+------------------------------------------------------------------------------------------
+Definition: all eligible numeric structured features present in Phase 1.
+Feature count: 90
+
+0001. adx_14
+0002. atr_pct_14
+0003. atr_pct_21
+0004. atr_pct_7
+0005. body_pct
+0006. close_position_in_range
+0007. close_vs_ema20
+0008. close_vs_sma10
+0009. close_vs_sma100
+0010. close_vs_sma20
+0011. close_vs_sma200
+0012. close_vs_sma50
+0013. deliverable_pct
+0014. deliverable_qty
+0015. dollar_volume
+0016. ema20_slope
+0017. ema50_slope
+0018. ema_20
+0019. gap_pct
+0020. high_low_range_pct
+0021. intraday_return
+0022. last
+0023. lower_wick_pct
+0024. macd
+0025. macd_histogram
+0026. macd_signal
+0027. market_alignment_score
+0028. market_momentum_regime
+0029. market_relative_return_1d
+0030. market_relative_return_20d
+0031. market_relative_return_5d
+0032. market_trend_regime
+0033. market_volatility_regime
+0034. momentum_consistency_score
+0035. nifty50_return_1d
+0036. nifty50_return_20d
+0037. nifty50_return_3d
+0038. nifty50_return_5d
+0039. nifty50_volatility_10d
+0040. nifty50_volatility_20d
+0041. nifty50_volatility_5d
+0042. num_trades
+0043. prev_close
+0044. price_volume_corr_20d
+0045. relative_strength_rank
+0046. relative_volatility_20d
+0047. return_10d
+0048. return_1d
+0049. return_20d
+0050. return_3d
+0051. return_5d
+0052. return_acceleration_1d_5d
+0053. return_rank_1d
+0054. return_rank_20d
+0055. return_rank_5d
+0056. roc_10
+0057. roc_20
+0058. rolling_beta_20d
+0059. rolling_beta_60d
+0060. rsi_14
+0061. rsi_21
+0062. rsi_7
+0063. sma20_slope
+0064. sma20_vs_sma50
+0065. sma50_slope
+0066. sma50_vs_sma200
+0067. sma_20
+0068. sma_50
+0069. stochastic_d
+0070. stochastic_k
+0071. stock_return_vol_adjusted
+0072. stock_vs_nifty50_1d
+0073. stock_vs_nifty50_20d
+0074. stock_vs_nifty50_5d
+0075. traded_value
+0076. trend_strength_score
+0077. upper_wick_pct
+0078. volatility_10d
+0079. volatility_20d
+0080. volatility_5d
+0081. volatility_60d
+0082. volatility_ratio_20_60
+0083. volatility_ratio_5_20
+0084. volume_change_1d
+0085. volume_rank
+0086. volume_ratio_10d
+0087. volume_ratio_20d
+0088. volume_ratio_5d
+0089. volume_ratio_60d
+0090. vwap
+
+VALIDATION RESULT
+------------------------------------------------------------------------------------------
+STATUS: PASSED
+
+Phase-2 input datasets are structurally ready for the baseline training step.
+
+MISSING-VALUE POLICY
+------------------------------------------------------------------------------------------
+Missingness is profiled independently for train/validation/test. No imputation is fitted in Step 2.1. XGBoost native missing-value handling remains the baseline policy.
+Missing-profile artifacts: evaluation/day1/missing_profiles/*.parquet
+
+PHASE BOUNDARY
+------------------------------------------------------------------------------------------
+No model training, prediction, ranking, tuning or test-driven feature decisions are performed by this script.

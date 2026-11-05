@@ -1,0 +1,59 @@
+project:
+  name: stock-prediction
+  version: "mvp"
+
+market:
+  exchange: NSE
+  country: India
+  currency: INR
+  frequency: daily
+
+universe:
+  name: NSE_100
+  size: 100
+
+prediction:
+  primary_horizon_days: 5
+  horizons:
+    - 1
+    - 3
+    - 5
+    - 10
+    - 20
+
+data:
+  price_columns:
+    - trade_date
+    - symbol
+    - open
+    - high
+    - low
+    - close
+    - volume
+    - traded_value
+
+storage:
+  raw_data: data/raw/nse
+  processed_prices: data/processed/prices
+  processed: data/processed
+  modeling: data/processed/modeling
+  evaluation: data/evaluation
+  stock_master: data/processed/stock_master
+  corporate_actions: data/processed/corporate_actions
+  calendar: data/processed/calendar
+  features: data/features
+  targets: data/targets
+  predictions: data/predictions
+  backtests: data/backtests
+  models: data/models
+  reference: data/reference
+
+model:
+  primary: xgboost
+
+backtest:
+  strategy: top_n_equal_weight
+  benchmark: NIFTY500
+  holding_period_days: 5
+  transaction_costs: true
+  slippage: true

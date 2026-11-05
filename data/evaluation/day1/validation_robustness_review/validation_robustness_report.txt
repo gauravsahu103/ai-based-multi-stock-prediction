@@ -1,0 +1,173 @@
+VALIDATION ROBUSTNESS REVIEW
+========================================================================================
+
+DATA BOUNDARY
+Only the saved validation partition and validation prediction artifacts were read.
+No train or test partition was loaded. No models were fitted and no thresholds were tuned.
+Validation prediction rows per model: 17,283
+Model strategies: E0, E1, E2, E3, E4, E5, E6
+Classification threshold is fixed at 0.5.
+Bootstrap: 5,000 paired circular moving-block resamples; block length 5 trading sessions.
+Confidence intervals are nominal 95% intervals and are not adjusted for multiple comparisons.
+
+STRATEGY SUMMARY
+              strategy              strategy_type  feature_count  rows  dates  regression_rmse  regression_mae  regression_r2  regression_pearson  classification_accuracy  classification_precision  classification_recall  classification_f1  classification_roc_auc  classification_pr_auc  classification_log_loss  daily_spearman_mean  daily_spearman_median  ranking_days_evaluated  top_5_average_realized_return  top_5_hit_rate  top_10_average_realized_return  top_10_hit_rate  top_20_average_realized_return  top_20_hit_rate  daily_rmse_mean  daily_mae_mean  daily_direction_accuracy_mean
+                    E0              xgboost_model             90 17283    186         0.038878        0.012693      -0.045148            0.016792                 0.519412                  0.526226               0.591094           0.556777                0.517130               0.525847                 0.707205             0.006213               0.012672                     186                       0.001484        0.549462                        0.001164         0.527419                        0.002182         0.512366         0.020865        0.012710                       0.519342
+                    E1              xgboost_model             24 17283    186         0.038588        0.012738      -0.029620            0.025492                 0.500897                  0.510354               0.558464           0.533326                0.506079               0.519047                 0.717399             0.009596               0.010442                     186                       0.000305        0.526882                        0.000838         0.532796                        0.000562         0.514516         0.020212        0.012754                       0.500948
+                    E2              xgboost_model             85 17283    186         0.039133        0.012829      -0.058898            0.017206                 0.511196                  0.519412               0.572966           0.544877                0.519892               0.528076                 0.705714             0.010952               0.022600                     186                       0.000820        0.529032                        0.000932         0.517742                        0.001186         0.522849         0.021478        0.012845                       0.511085
+                    E3              xgboost_model             70 17283    186         0.038863        0.012343      -0.044328            0.008892                 0.515825                  0.523944               0.567754           0.544970                0.518001               0.524899                 0.697477             0.022573               0.018088                     186                       0.000716        0.502151                        0.000873         0.513441                        0.002173         0.528495         0.020720        0.012358                       0.515901
+                    E4              xgboost_model             80 17283    186         0.038889        0.012688      -0.045736            0.024365                 0.520917                  0.527148               0.600612           0.561487                0.526206               0.531350                 0.704408             0.014818               0.009567                     186                       0.001371        0.518280                        0.001188         0.517742                        0.002075         0.512097         0.020951        0.012704                       0.520905
+                    E5              xgboost_model             55 17283    186         0.038525        0.012578      -0.026234            0.026987                 0.512642                  0.520792               0.571833           0.545121                0.517033               0.523879                 0.704728             0.004300               0.005328                     186                       0.001018        0.520430                        0.000312         0.511828                        0.001945         0.513172         0.020186        0.012593                       0.512518
+                    E6              xgboost_model             70 17283    186         0.038484        0.012410      -0.024050            0.025674                 0.527165                  0.534155               0.579424           0.555870                0.531063               0.532299                 0.701372             0.008111               0.018550                     186                       0.000603        0.511828                        0.000537         0.511290                        0.001061         0.521774         0.020090        0.012426                       0.527105
+ZERO_RETURN_REGRESSION       regression_reference              0 17283    186         0.038042        0.011847      -0.000654                 NaN                      NaN                       NaN                    NaN                NaN                     NaN                    NaN                      NaN                  NaN                    NaN                       0                            NaN             NaN                             NaN              NaN                             NaN              NaN              NaN             NaN                            NaN
+      MOMENTUM_5D_RANK momentum_ranking_reference              0 17283    186              NaN             NaN            NaN                 NaN                      NaN                       NaN                    NaN                NaN                     NaN                    NaN                      NaN            -0.010615              -0.013279                     186                       0.000215        0.526882                        0.000494         0.509677                        0.000574         0.497043              NaN             NaN                            NaN
+
+PAIRED COMPARISONS WITH INTERVALS
+E1 vs E0 | daily_rmse | mean difference=-0.000653 | nominal 95% CI=[-0.001486, 0.000074] | paired dates=186 | negative_favors_candidate
+E1 vs E0 | daily_mae | mean difference=0.000045 | nominal 95% CI=[-0.000299, 0.000384] | paired dates=186 | negative_favors_candidate
+E1 vs E0 | daily_direction_accuracy | mean difference=-0.018394 | nominal 95% CI=[-0.047914, 0.012170] | paired dates=186 | positive_favors_candidate
+E1 vs E0 | daily_spearman | mean difference=0.003383 | nominal 95% CI=[-0.019117, 0.027174] | paired dates=186 | positive_favors_candidate
+E1 vs E0 | top_5_average_realized_return | mean difference=-0.001179 | nominal 95% CI=[-0.003081, 0.000421] | paired dates=186 | positive_favors_candidate
+E1 vs E0 | top_5_hit_rate | mean difference=-0.022581 | nominal 95% CI=[-0.054839, 0.010753] | paired dates=186 | positive_favors_candidate
+E1 vs E0 | top_10_average_realized_return | mean difference=-0.000326 | nominal 95% CI=[-0.001470, 0.000772] | paired dates=186 | positive_favors_candidate
+E1 vs E0 | top_10_hit_rate | mean difference=0.005376 | nominal 95% CI=[-0.018817, 0.030108] | paired dates=186 | positive_favors_candidate
+E1 vs E0 | top_20_average_realized_return | mean difference=-0.001620 | nominal 95% CI=[-0.004443, 0.000209] | paired dates=186 | positive_favors_candidate
+E1 vs E0 | top_20_hit_rate | mean difference=0.002151 | nominal 95% CI=[-0.013978, 0.019086] | paired dates=186 | positive_favors_candidate
+E2 vs E0 | daily_rmse | mean difference=0.000613 | nominal 95% CI=[0.000321, 0.000944] | paired dates=186 | negative_favors_candidate
+E2 vs E0 | daily_mae | mean difference=0.000136 | nominal 95% CI=[0.000023, 0.000246] | paired dates=186 | negative_favors_candidate
+E2 vs E0 | daily_direction_accuracy | mean difference=-0.008257 | nominal 95% CI=[-0.022055, 0.004045] | paired dates=186 | positive_favors_candidate
+E2 vs E0 | daily_spearman | mean difference=0.004739 | nominal 95% CI=[-0.010851, 0.020830] | paired dates=186 | positive_favors_candidate
+E2 vs E0 | top_5_average_realized_return | mean difference=-0.000664 | nominal 95% CI=[-0.001681, 0.000341] | paired dates=186 | positive_favors_candidate
+E2 vs E0 | top_5_hit_rate | mean difference=-0.020430 | nominal 95% CI=[-0.050538, 0.010753] | paired dates=186 | positive_favors_candidate
+E2 vs E0 | top_10_average_realized_return | mean difference=-0.000232 | nominal 95% CI=[-0.000920, 0.000440] | paired dates=186 | positive_favors_candidate
+E2 vs E0 | top_10_hit_rate | mean difference=-0.009677 | nominal 95% CI=[-0.030108, 0.011828] | paired dates=186 | positive_favors_candidate
+E2 vs E0 | top_20_average_realized_return | mean difference=-0.000996 | nominal 95% CI=[-0.003604, 0.000528] | paired dates=186 | positive_favors_candidate
+E2 vs E0 | top_20_hit_rate | mean difference=0.010484 | nominal 95% CI=[-0.002688, 0.023656] | paired dates=186 | positive_favors_candidate
+E3 vs E0 | daily_rmse | mean difference=-0.000145 | nominal 95% CI=[-0.000727, 0.000447] | paired dates=186 | negative_favors_candidate
+E3 vs E0 | daily_mae | mean difference=-0.000351 | nominal 95% CI=[-0.000689, -0.000022] | paired dates=186 | negative_favors_candidate
+E3 vs E0 | daily_direction_accuracy | mean difference=-0.003441 | nominal 95% CI=[-0.029689, 0.023709] | paired dates=186 | positive_favors_candidate
+E3 vs E0 | daily_spearman | mean difference=0.016360 | nominal 95% CI=[-0.001575, 0.035150] | paired dates=186 | positive_favors_candidate
+E3 vs E0 | top_5_average_realized_return | mean difference=-0.000768 | nominal 95% CI=[-0.001930, 0.000415] | paired dates=186 | positive_favors_candidate
+E3 vs E0 | top_5_hit_rate | mean difference=-0.047312 | nominal 95% CI=[-0.084946, -0.010753] | paired dates=186 | positive_favors_candidate
+E3 vs E0 | top_10_average_realized_return | mean difference=-0.000290 | nominal 95% CI=[-0.001177, 0.000618] | paired dates=186 | positive_favors_candidate
+E3 vs E0 | top_10_hit_rate | mean difference=-0.013978 | nominal 95% CI=[-0.037097, 0.008602] | paired dates=186 | positive_favors_candidate
+E3 vs E0 | top_20_average_realized_return | mean difference=-0.000009 | nominal 95% CI=[-0.000582, 0.000585] | paired dates=186 | positive_favors_candidate
+E3 vs E0 | top_20_hit_rate | mean difference=0.016129 | nominal 95% CI=[-0.000806, 0.032527] | paired dates=186 | positive_favors_candidate
+E4 vs E0 | daily_rmse | mean difference=0.000086 | nominal 95% CI=[-0.000322, 0.000509] | paired dates=186 | negative_favors_candidate
+E4 vs E0 | daily_mae | mean difference=-0.000006 | nominal 95% CI=[-0.000138, 0.000116] | paired dates=186 | negative_favors_candidate
+E4 vs E0 | daily_direction_accuracy | mean difference=0.001563 | nominal 95% CI=[-0.009425, 0.013273] | paired dates=186 | positive_favors_candidate
+E4 vs E0 | daily_spearman | mean difference=0.008606 | nominal 95% CI=[-0.008082, 0.025450] | paired dates=186 | positive_favors_candidate
+E4 vs E0 | top_5_average_realized_return | mean difference=-0.000113 | nominal 95% CI=[-0.001528, 0.001701] | paired dates=186 | positive_favors_candidate
+E4 vs E0 | top_5_hit_rate | mean difference=-0.031183 | nominal 95% CI=[-0.064516, 0.002151] | paired dates=186 | positive_favors_candidate
+E4 vs E0 | top_10_average_realized_return | mean difference=0.000025 | nominal 95% CI=[-0.000814, 0.001037] | paired dates=186 | positive_favors_candidate
+E4 vs E0 | top_10_hit_rate | mean difference=-0.009677 | nominal 95% CI=[-0.030108, 0.011290] | paired dates=186 | positive_favors_candidate
+E4 vs E0 | top_20_average_realized_return | mean difference=-0.000107 | nominal 95% CI=[-0.000667, 0.000398] | paired dates=186 | positive_favors_candidate
+E4 vs E0 | top_20_hit_rate | mean difference=-0.000269 | nominal 95% CI=[-0.014247, 0.012910] | paired dates=186 | positive_favors_candidate
+E5 vs E0 | daily_rmse | mean difference=-0.000679 | nominal 95% CI=[-0.001419, -0.000061] | paired dates=186 | negative_favors_candidate
+E5 vs E0 | daily_mae | mean difference=-0.000117 | nominal 95% CI=[-0.000281, 0.000043] | paired dates=186 | negative_favors_candidate
+E5 vs E0 | daily_direction_accuracy | mean difference=-0.006824 | nominal 95% CI=[-0.022183, 0.007260] | paired dates=186 | positive_favors_candidate
+E5 vs E0 | daily_spearman | mean difference=-0.001913 | nominal 95% CI=[-0.019482, 0.015719] | paired dates=186 | positive_favors_candidate
+E5 vs E0 | top_5_average_realized_return | mean difference=-0.000466 | nominal 95% CI=[-0.001785, 0.000958] | paired dates=186 | positive_favors_candidate
+E5 vs E0 | top_5_hit_rate | mean difference=-0.029032 | nominal 95% CI=[-0.060215, 0.003226] | paired dates=186 | positive_favors_candidate
+E5 vs E0 | top_10_average_realized_return | mean difference=-0.000852 | nominal 95% CI=[-0.001958, 0.000137] | paired dates=186 | positive_favors_candidate
+E5 vs E0 | top_10_hit_rate | mean difference=-0.015591 | nominal 95% CI=[-0.038172, 0.006989] | paired dates=186 | positive_favors_candidate
+E5 vs E0 | top_20_average_realized_return | mean difference=-0.000237 | nominal 95% CI=[-0.000924, 0.000400] | paired dates=186 | positive_favors_candidate
+E5 vs E0 | top_20_hit_rate | mean difference=0.000806 | nominal 95% CI=[-0.016405, 0.017742] | paired dates=186 | positive_favors_candidate
+E6 vs E0 | daily_rmse | mean difference=-0.000775 | nominal 95% CI=[-0.001218, -0.000405] | paired dates=186 | negative_favors_candidate
+E6 vs E0 | daily_mae | mean difference=-0.000283 | nominal 95% CI=[-0.000440, -0.000127] | paired dates=186 | negative_favors_candidate
+E6 vs E0 | daily_direction_accuracy | mean difference=0.007764 | nominal 95% CI=[-0.006185, 0.021879] | paired dates=186 | positive_favors_candidate
+E6 vs E0 | daily_spearman | mean difference=0.001898 | nominal 95% CI=[-0.017005, 0.021181] | paired dates=186 | positive_favors_candidate
+E6 vs E0 | top_5_average_realized_return | mean difference=-0.000881 | nominal 95% CI=[-0.002345, 0.000715] | paired dates=186 | positive_favors_candidate
+E6 vs E0 | top_5_hit_rate | mean difference=-0.037634 | nominal 95% CI=[-0.072043, -0.001048] | paired dates=186 | positive_favors_candidate
+E6 vs E0 | top_10_average_realized_return | mean difference=-0.000627 | nominal 95% CI=[-0.001392, 0.000119] | paired dates=186 | positive_favors_candidate
+E6 vs E0 | top_10_hit_rate | mean difference=-0.016129 | nominal 95% CI=[-0.039785, 0.006989] | paired dates=186 | positive_favors_candidate
+E6 vs E0 | top_20_average_realized_return | mean difference=-0.001122 | nominal 95% CI=[-0.003666, 0.000389] | paired dates=186 | positive_favors_candidate
+E6 vs E0 | top_20_hit_rate | mean difference=0.009409 | nominal 95% CI=[-0.005914, 0.024462] | paired dates=186 | positive_favors_candidate
+E0 vs MOMENTUM_5D_RANK | daily_spearman | mean difference=0.016827 | nominal 95% CI=[-0.008235, 0.041503] | paired dates=186 | positive_favors_candidate
+E0 vs MOMENTUM_5D_RANK | top_5_average_realized_return | mean difference=0.001269 | nominal 95% CI=[-0.000222, 0.002860] | paired dates=186 | positive_favors_candidate
+E0 vs MOMENTUM_5D_RANK | top_5_hit_rate | mean difference=0.022581 | nominal 95% CI=[-0.015054, 0.059140] | paired dates=186 | positive_favors_candidate
+E0 vs MOMENTUM_5D_RANK | top_10_average_realized_return | mean difference=0.000670 | nominal 95% CI=[-0.000306, 0.001672] | paired dates=186 | positive_favors_candidate
+E0 vs MOMENTUM_5D_RANK | top_10_hit_rate | mean difference=0.017742 | nominal 95% CI=[-0.009140, 0.043011] | paired dates=186 | positive_favors_candidate
+E0 vs MOMENTUM_5D_RANK | top_20_average_realized_return | mean difference=0.001608 | nominal 95% CI=[-0.000152, 0.004365] | paired dates=186 | positive_favors_candidate
+E0 vs MOMENTUM_5D_RANK | top_20_hit_rate | mean difference=0.015323 | nominal 95% CI=[-0.005108, 0.036022] | paired dates=186 | positive_favors_candidate
+E1 vs MOMENTUM_5D_RANK | daily_spearman | mean difference=0.020210 | nominal 95% CI=[-0.007041, 0.049624] | paired dates=186 | positive_favors_candidate
+E1 vs MOMENTUM_5D_RANK | top_5_average_realized_return | mean difference=0.000090 | nominal 95% CI=[-0.001587, 0.001658] | paired dates=186 | positive_favors_candidate
+E1 vs MOMENTUM_5D_RANK | top_5_hit_rate | mean difference=0.000000 | nominal 95% CI=[-0.037634, 0.038710] | paired dates=186 | positive_favors_candidate
+E1 vs MOMENTUM_5D_RANK | top_10_average_realized_return | mean difference=0.000344 | nominal 95% CI=[-0.000849, 0.001518] | paired dates=186 | positive_favors_candidate
+E1 vs MOMENTUM_5D_RANK | top_10_hit_rate | mean difference=0.023118 | nominal 95% CI=[-0.005376, 0.051075] | paired dates=186 | positive_favors_candidate
+E1 vs MOMENTUM_5D_RANK | top_20_average_realized_return | mean difference=-0.000012 | nominal 95% CI=[-0.001124, 0.000982] | paired dates=186 | positive_favors_candidate
+E1 vs MOMENTUM_5D_RANK | top_20_hit_rate | mean difference=0.017473 | nominal 95% CI=[-0.000806, 0.035215] | paired dates=186 | positive_favors_candidate
+E2 vs MOMENTUM_5D_RANK | daily_spearman | mean difference=0.021566 | nominal 95% CI=[-0.005749, 0.048921] | paired dates=186 | positive_favors_candidate
+E2 vs MOMENTUM_5D_RANK | top_5_average_realized_return | mean difference=0.000605 | nominal 95% CI=[-0.000816, 0.002086] | paired dates=186 | positive_favors_candidate
+E2 vs MOMENTUM_5D_RANK | top_5_hit_rate | mean difference=0.002151 | nominal 95% CI=[-0.031183, 0.036559] | paired dates=186 | positive_favors_candidate
+E2 vs MOMENTUM_5D_RANK | top_10_average_realized_return | mean difference=0.000438 | nominal 95% CI=[-0.000546, 0.001498] | paired dates=186 | positive_favors_candidate
+E2 vs MOMENTUM_5D_RANK | top_10_hit_rate | mean difference=0.008065 | nominal 95% CI=[-0.019892, 0.035484] | paired dates=186 | positive_favors_candidate
+E2 vs MOMENTUM_5D_RANK | top_20_average_realized_return | mean difference=0.000612 | nominal 95% CI=[-0.000095, 0.001326] | paired dates=186 | positive_favors_candidate
+E2 vs MOMENTUM_5D_RANK | top_20_hit_rate | mean difference=0.025806 | nominal 95% CI=[0.005376, 0.045699] | paired dates=186 | positive_favors_candidate
+E3 vs MOMENTUM_5D_RANK | daily_spearman | mean difference=0.033187 | nominal 95% CI=[0.007722, 0.057239] | paired dates=186 | positive_favors_candidate
+E3 vs MOMENTUM_5D_RANK | top_5_average_realized_return | mean difference=0.000501 | nominal 95% CI=[-0.001156, 0.002198] | paired dates=186 | positive_favors_candidate
+E3 vs MOMENTUM_5D_RANK | top_5_hit_rate | mean difference=-0.024731 | nominal 95% CI=[-0.062392, 0.012903] | paired dates=186 | positive_favors_candidate
+E3 vs MOMENTUM_5D_RANK | top_10_average_realized_return | mean difference=0.000379 | nominal 95% CI=[-0.000718, 0.001459] | paired dates=186 | positive_favors_candidate
+E3 vs MOMENTUM_5D_RANK | top_10_hit_rate | mean difference=0.003763 | nominal 95% CI=[-0.021505, 0.027419] | paired dates=186 | positive_favors_candidate
+E3 vs MOMENTUM_5D_RANK | top_20_average_realized_return | mean difference=0.001599 | nominal 95% CI=[-0.000052, 0.004210] | paired dates=186 | positive_favors_candidate
+E3 vs MOMENTUM_5D_RANK | top_20_hit_rate | mean difference=0.031452 | nominal 95% CI=[0.013441, 0.049194] | paired dates=186 | positive_favors_candidate
+E4 vs MOMENTUM_5D_RANK | daily_spearman | mean difference=0.025433 | nominal 95% CI=[-0.002099, 0.051748] | paired dates=186 | positive_favors_candidate
+E4 vs MOMENTUM_5D_RANK | top_5_average_realized_return | mean difference=0.001156 | nominal 95% CI=[-0.000692, 0.003497] | paired dates=186 | positive_favors_candidate
+E4 vs MOMENTUM_5D_RANK | top_5_hit_rate | mean difference=-0.008602 | nominal 95% CI=[-0.047312, 0.031183] | paired dates=186 | positive_favors_candidate
+E4 vs MOMENTUM_5D_RANK | top_10_average_realized_return | mean difference=0.000694 | nominal 95% CI=[-0.000364, 0.001820] | paired dates=186 | positive_favors_candidate
+E4 vs MOMENTUM_5D_RANK | top_10_hit_rate | mean difference=0.008065 | nominal 95% CI=[-0.018280, 0.033333] | paired dates=186 | positive_favors_candidate
+E4 vs MOMENTUM_5D_RANK | top_20_average_realized_return | mean difference=0.001501 | nominal 95% CI=[-0.000305, 0.004335] | paired dates=186 | positive_favors_candidate
+E4 vs MOMENTUM_5D_RANK | top_20_hit_rate | mean difference=0.015054 | nominal 95% CI=[-0.005645, 0.036290] | paired dates=186 | positive_favors_candidate
+E5 vs MOMENTUM_5D_RANK | daily_spearman | mean difference=0.014914 | nominal 95% CI=[-0.013204, 0.041636] | paired dates=186 | positive_favors_candidate
+E5 vs MOMENTUM_5D_RANK | top_5_average_realized_return | mean difference=0.000803 | nominal 95% CI=[-0.000757, 0.002643] | paired dates=186 | positive_favors_candidate
+E5 vs MOMENTUM_5D_RANK | top_5_hit_rate | mean difference=-0.006452 | nominal 95% CI=[-0.043011, 0.031183] | paired dates=186 | positive_favors_candidate
+E5 vs MOMENTUM_5D_RANK | top_10_average_realized_return | mean difference=-0.000182 | nominal 95% CI=[-0.001222, 0.000858] | paired dates=186 | positive_favors_candidate
+E5 vs MOMENTUM_5D_RANK | top_10_hit_rate | mean difference=0.002151 | nominal 95% CI=[-0.028495, 0.033333] | paired dates=186 | positive_favors_candidate
+E5 vs MOMENTUM_5D_RANK | top_20_average_realized_return | mean difference=0.001371 | nominal 95% CI=[-0.000329, 0.004043] | paired dates=186 | positive_favors_candidate
+E5 vs MOMENTUM_5D_RANK | top_20_hit_rate | mean difference=0.016129 | nominal 95% CI=[-0.007258, 0.039516] | paired dates=186 | positive_favors_candidate
+E6 vs MOMENTUM_5D_RANK | daily_spearman | mean difference=0.018726 | nominal 95% CI=[-0.010082, 0.047589] | paired dates=186 | positive_favors_candidate
+E6 vs MOMENTUM_5D_RANK | top_5_average_realized_return | mean difference=0.000388 | nominal 95% CI=[-0.001344, 0.002418] | paired dates=186 | positive_favors_candidate
+E6 vs MOMENTUM_5D_RANK | top_5_hit_rate | mean difference=-0.015054 | nominal 95% CI=[-0.051613, 0.021505] | paired dates=186 | positive_favors_candidate
+E6 vs MOMENTUM_5D_RANK | top_10_average_realized_return | mean difference=0.000042 | nominal 95% CI=[-0.000944, 0.000978] | paired dates=186 | positive_favors_candidate
+E6 vs MOMENTUM_5D_RANK | top_10_hit_rate | mean difference=0.001613 | nominal 95% CI=[-0.024194, 0.027419] | paired dates=186 | positive_favors_candidate
+E6 vs MOMENTUM_5D_RANK | top_20_average_realized_return | mean difference=0.000487 | nominal 95% CI=[-0.000227, 0.001158] | paired dates=186 | positive_favors_candidate
+E6 vs MOMENTUM_5D_RANK | top_20_hit_rate | mean difference=0.024731 | nominal 95% CI=[0.007789, 0.043011] | paired dates=186 | positive_favors_candidate
+
+E0 DATE-LEVEL EXTREMES
+Lowest E0 daily Spearman values:
+  2025-05-05: Spearman=-0.542253, stocks=92
+  2025-04-17: Spearman=-0.313657, stocks=92
+  2025-09-05: Spearman=-0.311271, stocks=93
+  2025-10-21: Spearman=-0.300972, stocks=94
+  2025-12-15: Spearman=-0.292455, stocks=95
+  2025-03-19: Spearman=-0.271134, stocks=92
+  2025-06-19: Spearman=-0.270687, stocks=92
+  2025-05-21: Spearman=-0.266911, stocks=92
+  2025-03-24: Spearman=-0.258974, stocks=92
+  2025-03-27: Spearman=-0.214972, stocks=92
+Highest E0 daily Spearman values:
+  2025-04-11: Spearman=0.391705, stocks=92
+  2025-06-18: Spearman=0.365273, stocks=92
+  2025-06-05: Spearman=0.312146, stocks=92
+  2025-06-03: Spearman=0.307276, stocks=92
+  2025-03-28: Spearman=0.306382, stocks=92
+  2025-07-23: Spearman=0.291286, stocks=93
+  2025-09-04: Spearman=0.278834, stocks=93
+  2025-09-18: Spearman=0.264794, stocks=93
+  2025-03-18: Spearman=0.243299, stocks=92
+  2025-09-11: Spearman=0.237448, stocks=93
+
+INTERPRETATION GUARDRAILS
+1. A confidence interval spanning zero does not show a clear improvement over the reference in that metric.
+2. A confidence interval excluding zero is still exploratory because many metrics and candidates are compared.
+3. Date-block resampling preserves local sequences of nearby trading days better than independently resampling individual rows.
+4. Top-K values are gross next-session returns; they are not proof of tradable profitability.
+5. E0 remains the frozen reference during this review. Do not use these results to open the final test partition.
+6. The 5-day momentum strategy is a simple ranking reference using only the validation row's lagged return_5d feature.
+
+FILES
+  strategy_summary.csv
+  daily_strategy_metrics.csv
+  paired_comparisons.csv
+  e0_extreme_dates.csv
+  review_metadata.json

@@ -1,0 +1,45 @@
+{
+  "review": "validation_robustness_review",
+  "generated_at_utc": "2026-10-10T03:52:03.782739+00:00",
+  "validation_file": "/Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/data/processed/modeling/day1/validation.parquet",
+  "validation_rows": 17283,
+  "validation_dates": 186,
+  "strategies": [
+    "E0",
+    "E1",
+    "E2",
+    "E3",
+    "E4",
+    "E5",
+    "E6",
+    "ZERO_RETURN_REGRESSION",
+    "MOMENTUM_5D_RANK"
+  ],
+  "test_partition_loaded": false,
+  "train_partition_loaded": false,
+  "models_fitted": false,
+  "threshold_tuned": false,
+  "threshold": 0.5,
+  "top_k": [
+    5,
+    10,
+    20
+  ],
+  "bootstrap_iterations": 5000,
+  "bootstrap_method": "paired circular moving-block bootstrap over trading dates",
+  "bootstrap_block_length_trading_days": 5,
+  "bootstrap_seed": 20261010,
+  "nominal_confidence_level": 0.95,
+  "multiple_comparison_adjustment": false,
+  "input_sha256": {
+    "validation_partition": "0320841e39b09f916aa56238c2dc8b1f0be5e0079ab8608207b73bb52defea4f",
+    "E0_predictions": "fcb1abd7105e679403e7fb734eef73015520d2f4fee874f7f688bd9a940b2c4a",
+    "E1_predictions": "6a74a07cb060ff2274ba831819aa6ced0442ad9ec3d25814bfe005f69248b78b",
+    "E2_predictions": "e2726781a08e86676bc2bfbb50a165eef5f53c1f1a9f0e820c489e6fa783019b",
+    "E3_predictions": "ec33343d184637038baf49889d20e71d6cd03835694d1ab04e20deb1da30fe65",
+    "E4_predictions": "05f1166355af4dc0eea171d55e674ba1721bb99636ef5deb7b41bcfe302ded82",
+    "E5_predictions": "58838d7dc189fe7570d920932c315261e5d05bc310513400df960a2173cbfd82",
+    "E6_predictions": "2d7a57ba3c763547335c6ece0d93d6f6211f9d795991afc1be807c6b8c736815"
+  },
+  "output_directory": "/Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/data/evaluation/day1/validation_robustness_review"
+}

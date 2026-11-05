@@ -1,0 +1,14 @@
+{
+  "model": "E0_BASELINE",
+  "horizon_sessions": 1,
+  "rows": 17670,
+  "dates": 186,
+  "stocks": 95,
+  "model_rmse": 0.022911106470154482,
+  "zero_return_rmse": 0.0211544583848865,
+  "model_mae": 0.014679782412396737,
+  "zero_return_mae": 0.013758432413843833,
+  "model_r2": -0.17298300666910094,
+  "model_pearson": 0.027529039535218302,
+  "interpretation": "Error comparisons are descriptive; lower is better. No profitability claim is implied."
+}

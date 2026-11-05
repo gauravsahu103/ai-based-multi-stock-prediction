@@ -1,0 +1,37 @@
+# Additive experiment configuration. Does not replace config/day1.yaml.
+experiment:
+  name: day1_xgboost_hyperparameter_tuning
+  horizon: 1
+  feature_set: E0
+  random_seed: 42
+
+validation:
+  method: expanding_window_on_train_partition
+  n_splits: 3
+  # Selection is done only on rolling validation blocks carved from train.parquet.
+  primary_metric: daily_spearman_selection_score
+  top_k: [5, 10, 20]
+
+search:
+  # In addition to the unchanged E0 baseline parameter set, sample this many candidates.
+  n_iter: 16
+  parameter_space:
+    n_estimators: [200, 300, 500, 700]
+    learning_rate: [0.02, 0.03, 0.05, 0.08]
+    max_depth: [3, 4, 5, 6, 8]
+    min_child_weight: [1, 3, 5, 8]
+    subsample: [0.70, 0.85, 1.0]
+    colsample_bytree: [0.70, 0.85, 1.0]
+    gamma: [0.0, 0.05, 0.1, 0.3]
+    reg_alpha: [0.0, 0.001, 0.01, 0.1, 1.0]
+    reg_lambda: [1.0, 3.0, 5.0, 10.0]
+
+outputs:
+  directory: data/evaluation/day1/hyperparameter_tuning
+  trials_csv: candidate_cv_results.csv
+  selected_params_json: selected_params.json
+  validation_metrics_json: selected_candidate_validation_metrics.json
+  validation_predictions_parquet: selected_candidate_validation_predictions.parquet
+  selected_model_json: selected_candidate_regression_model.json
+  report_txt: tuning_report.txt
+  metadata_json: run_metadata.json

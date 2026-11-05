@@ -1,0 +1,104 @@
+====================================================================================================
+PHASE 1 — DAY-1 DATA INTEGRITY AUDIT
+====================================================================================================
+
+READ-ONLY DIAGNOSTIC
+No source data, targets, features or modeling datasets were modified.
+Corporate-action candidates are flags only; they are not automatically classified or corrected.
+
+Run UTC: 2026-10-03T01:06:33.873590+00:00
+Price files: 100
+Feature files: 100
+Target files: 100
+
+----------------------------------------------------------------------------------------------------
+01_PRICE_STRUCTURE
+----------------------------------------------------------------------------------------------------
+No findings.
+
+----------------------------------------------------------------------------------------------------
+02_PRICE_AND_TARGET_EXTREMES
+----------------------------------------------------------------------------------------------------
+- Price 1-day absolute return >= 10%: 266 candidates
+- Price 1-day absolute return >= 20%: 41 candidates
+- Price 1-day absolute return >= 30%: 31 candidates
+- Price 1-day absolute return >= 50%: 20 candidates
+- Target 1-day absolute return >= 10%: 266 candidates
+- Target 1-day absolute return >= 20%: 41 candidates
+- Target 1-day absolute return >= 30%: 31 candidates
+- Target 1-day absolute return >= 50%: 20 candidates
+
+----------------------------------------------------------------------------------------------------
+03_TARGET_INTEGRITY_AND_TPLUS1
+----------------------------------------------------------------------------------------------------
+- Target reconstruction mismatches: 0
+- T+1 calendar gap statistics: {'count': 114685.0, 'mean': 1.47, 'std': 0.96, 'min': 1.0, '25%': 1.0, '50%': 1.0, '75%': 1.0, 'max': 96.0}
+- T+1 gaps > 3 calendar days: 2,598
+
+----------------------------------------------------------------------------------------------------
+04_NIFTY_FEATURE_CORRECTNESS
+----------------------------------------------------------------------------------------------------
+- nifty50_return_1d: 4 mismatches
+- nifty50_return_3d: 194 mismatches
+- nifty50_return_5d: 384 mismatches
+- nifty50_return_20d: 1,809 mismatches
+- nifty50_volatility_5d: 20 mismatches
+- nifty50_volatility_10d: 40 mismatches
+- nifty50_volatility_20d: 80 mismatches
+- This is a high-priority check because the expected market series is calculated independently from the NIFTY calendar.
+
+----------------------------------------------------------------------------------------------------
+05_DAILY_UNIVERSE_COVERAGE
+----------------------------------------------------------------------------------------------------
+- Feature files / intended universe symbols: 100
+- Daily feature-universe count stats: {'count': 1240.0, 'mean': 92.57, 'std': 4.2, 'min': 85.0, '25%': 89.0, '50%': 92.0, '75%': 95.0, 'max': 100.0}
+- Dates below 100 stocks: 1,104
+
+----------------------------------------------------------------------------------------------------
+06_FEATURE_EXTREMES_AND_INFINITIES
+----------------------------------------------------------------------------------------------------
+- Features with |value| >= 1000: 11
+
+----------------------------------------------------------------------------------------------------
+07_E0_FEATURE_ELIGIBILITY
+----------------------------------------------------------------------------------------------------
+- Absolute/source-scale fields present in model feature inventory: deliverable_qty, ema_20, sma_20, sma_50, vwap
+- Exact / near-duplicate feature pairs: 6
+
+----------------------------------------------------------------------------------------------------
+08_CROSS_SECTIONAL_RANKS
+----------------------------------------------------------------------------------------------------
+- Cross-sectional rank calculations match date-local recomputation for available rows.
+
+----------------------------------------------------------------------------------------------------
+09_MISSINGNESS
+----------------------------------------------------------------------------------------------------
+- Features with >20% missing overall: 0
+
+----------------------------------------------------------------------------------------------------
+10_SECTOR_COVERAGE
+----------------------------------------------------------------------------------------------------
+- Sector column not present; sector coverage audit not applicable.
+
+----------------------------------------------------------------------------------------------------
+11_SPLIT_DISTRIBUTION_DRIFT
+----------------------------------------------------------------------------------------------------
+- Train/validation/test distribution summary generated.
+
+----------------------------------------------------------------------------------------------------
+12_PREDICTION_TIMING
+----------------------------------------------------------------------------------------------------
+- Timing-sensitive feature names requiring EOD-cutoff confirmation: 13
+
+----------------------------------------------------------------------------------------------------
+13_PHASE2_STOCK_DIAGNOSTICS
+----------------------------------------------------------------------------------------------------
+- Stock-level Phase-2 validation diagnostics generated for 99 symbols.
+
+Recommended correction order
+1. Confirm and correct corporate-action / price-series consistency.
+2. Rebuild NIFTY-derived features from the independent NIFTY calendar, then merge the completed market table into stocks.
+3. Revalidate daily universe coverage and T+1 calendar gaps.
+4. Review feature eligibility, duplicate features, missingness and extreme values.
+5. Regenerate technical features, targets and modeling datasets from the corrected price foundation.
+6. Re-run Phase 1 validation, then repeat the clean XGBoost baseline.

@@ -1,0 +1,84 @@
+{
+  "frozen_at_utc": "2026-10-27T12:03:22.514574+00:00",
+  "prediction_horizon_sessions": 1,
+  "split_policy": "Freeze and retain the already-trained model's existing chronological train/validation/test Parquet partitions; do not rebuild to the previously planned 65/15/20 split late in the study. Record actual date cutoffs and row/date counts. The test partition is not used to choose the model or features.",
+  "model_choice": {
+    "model": "E0_BASELINE",
+    "feature_set": "E0",
+    "prediction_horizon_sessions": 1,
+    "reason": "E0 remains the frozen reference. E0-E6 and TUNE_012 did not establish a consistently superior ranking result on validation; TUNE_012's validation Rank IC and Top-5 return were below E0 despite improved regression errors. Final test is used once for confirmation, not selection.",
+    "test_opened_before_freeze": false
+  },
+  "partitions_before_test_open": [
+    {
+      "partition": "train",
+      "path": "/Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/data/processed/modeling/day1/train.parquet",
+      "sha256": "fd8a997408063d44fb6ee5de9c6ca5dbd046523456f4779d304689df97f4860b",
+      "rows": 78194,
+      "unique_stocks": 92,
+      "unique_dates": 867,
+      "min_date": "2021-09-20T00:00:00",
+      "max_date": "2025-03-13T00:00:00",
+      "duplicate_symbol_date_rows": 0,
+      "positive_target_prevalence": 0.5125712970304627
+    },
+    {
+      "partition": "validation",
+      "path": "/Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/data/processed/modeling/day1/validation.parquet",
+      "sha256": "0320841e39b09f916aa56238c2dc8b1f0be5e0079ab8608207b73bb52defea4f",
+      "rows": 17283,
+      "unique_stocks": 95,
+      "unique_dates": 186,
+      "min_date": "2025-03-17T00:00:00",
+      "max_date": "2025-12-15T00:00:00",
+      "duplicate_symbol_date_rows": 0,
+      "positive_target_prevalence": 0.5106752299947925
+    }
+  ],
+  "pending_test_partition_path": "/Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/data/processed/modeling/day1/test.parquet",
+  "feature_inventory_path": "/Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/data/evaluation/day1/feature_inventory.json",
+  "feature_inventory_sha256": "1408549563220564474bebc9bcd44f4948dd9d5ef75be52bce86cf0a0b069d0d",
+  "E0_regression_model_path": "/Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/data/models/day1/xgboost_baseline/baseline_regression_model.json",
+  "E0_classification_model_path": "/Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/data/models/day1/xgboost_baseline/baseline_classification_model.json",
+  "note": "E0 model/feature choice is frozen using pre-existing validation evidence before test file is opened. The existing split is retained rather than replaced with new boundaries late in the analysis.",
+  "partitions_after_final_test_open": [
+    {
+      "partition": "train",
+      "path": "/Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/data/processed/modeling/day1/train.parquet",
+      "sha256": "fd8a997408063d44fb6ee5de9c6ca5dbd046523456f4779d304689df97f4860b",
+      "rows": 78194,
+      "unique_stocks": 92,
+      "unique_dates": 867,
+      "min_date": "2021-09-20T00:00:00",
+      "max_date": "2025-03-13T00:00:00",
+      "duplicate_symbol_date_rows": 0,
+      "positive_target_prevalence": 0.5125712970304627
+    },
+    {
+      "partition": "validation",
+      "path": "/Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/data/processed/modeling/day1/validation.parquet",
+      "sha256": "0320841e39b09f916aa56238c2dc8b1f0be5e0079ab8608207b73bb52defea4f",
+      "rows": 17283,
+      "unique_stocks": 95,
+      "unique_dates": 186,
+      "min_date": "2025-03-17T00:00:00",
+      "max_date": "2025-12-15T00:00:00",
+      "duplicate_symbol_date_rows": 0,
+      "positive_target_prevalence": 0.5106752299947925
+    },
+    {
+      "partition": "test",
+      "path": "/Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/data/processed/modeling/day1/test.parquet",
+      "sha256": "9ba3060c801719e50dfc38b35f8674bd7650ec5971f6eac5c49eb15fe01ca291",
+      "rows": 17670,
+      "unique_stocks": 95,
+      "unique_dates": 186,
+      "min_date": "2025-12-16T00:00:00",
+      "max_date": "2026-09-16T00:00:00",
+      "duplicate_symbol_date_rows": 0,
+      "positive_target_prevalence": 0.49207696661007355
+    }
+  ],
+  "final_test_opened_after_freeze": true,
+  "final_test_sha256": "9ba3060c801719e50dfc38b35f8674bd7650ec5971f6eac5c49eb15fe01ca291"
+}

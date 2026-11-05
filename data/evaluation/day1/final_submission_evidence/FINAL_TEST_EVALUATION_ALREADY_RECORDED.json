@@ -1,0 +1,16 @@
+{
+  "evaluation_recorded_at_utc": "2026-10-27T12:03:26.234377+00:00",
+  "evaluation_status": "COMPLETED",
+  "test_access_started": true,
+  "test_file_sha256": "9ba3060c801719e50dfc38b35f8674bd7650ec5971f6eac5c49eb15fe01ca291",
+  "test_used": true,
+  "used_for_model_selection": false,
+  "selected_model": "E0_BASELINE",
+  "evaluation_files": [
+    "final_test_regression_metrics.json",
+    "final_test_classification_metrics.json",
+    "final_test_ranking_metrics.json",
+    "final_test_paired_confidence_intervals.csv",
+    "final_test_predictions.parquet"
+  ]
+}

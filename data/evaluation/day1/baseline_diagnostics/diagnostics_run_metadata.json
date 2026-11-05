@@ -1,0 +1,14 @@
+{
+  "phase": "day1",
+  "step": "2.3",
+  "feature_set": "E0",
+  "feature_count": 90,
+  "train_rows": 78194,
+  "validation_rows": 17283,
+  "test_loaded": false,
+  "model_fitted": false,
+  "threshold_tuned": false,
+  "feature_selection_performed": false,
+  "generated_at_utc": "2026-10-10T03:23:14.831013+00:00",
+  "output_directory": "/Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/data/evaluation/day1/baseline_diagnostics"
+}

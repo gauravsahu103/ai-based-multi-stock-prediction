@@ -1,0 +1,15 @@
+{
+  "phase": "day1",
+  "step": "2.2",
+  "horizon": 1,
+  "feature_set": "E0",
+  "feature_count": 90,
+  "train_rows": 78194,
+  "validation_rows": 17283,
+  "test_used": false,
+  "random_seed": 42,
+  "missing_value_policy": "xgboost_native",
+  "config_file": "config/day1.yaml",
+  "xgboost_version": "3.4.1",
+  "generated_at_utc": "2026-10-08T00:45:45.396439+00:00"
+}

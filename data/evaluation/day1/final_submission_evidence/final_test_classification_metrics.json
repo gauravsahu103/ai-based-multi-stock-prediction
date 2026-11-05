@@ -1,0 +1,18 @@
+{
+  "positive_class_prevalence_from_training": 0.5125712970304627,
+  "rows": 17670,
+  "dates": 186,
+  "model_threshold_fixed_at": 0.5,
+  "model_accuracy": 0.4933220147142049,
+  "model_precision": 0.4868205966489579,
+  "model_recall": 0.5480161012075906,
+  "model_f1": 0.5156089379429746,
+  "model_roc_auc": 0.5007088439710973,
+  "model_pr_auc_average_precision": 0.5080926872252375,
+  "model_brier_score": 0.26675590034792235,
+  "prevalence_baseline_brier_score": 0.2503572431212822,
+  "model_log_loss": 0.7347207672408665,
+  "prevalence_baseline_log_loss": 0.6938618507317957,
+  "prevalence_baseline_probability_is_constant": true,
+  "note": "Prevalence probability is estimated only from training labels; threshold fixed at 0.5 for model classifications. Lower Brier/log loss is better."
+}

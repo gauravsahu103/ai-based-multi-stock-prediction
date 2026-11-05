@@ -1,0 +1,47 @@
+DAY-1 XGBOOST HYPERPARAMETER TUNING REPORT
+============================================
+Candidate count: 17 (including unchanged baseline parameters)
+Internal folds: 3 expanding-window folds, carved from train.parquet only
+Primary selection metric: daily_spearman_selection_score (higher is better)
+Candidate selection uses daily_spearman_selection_score; tie-breaker: RMSE (lower)
+Selection score assigns 0 on constant-prediction dates when actual returns vary; dates with constant actual returns are excluded for all candidates.
+Final test dataset loaded: NO
+
+TOP 5 CANDIDATES BY INTERNAL TRAIN-ONLY CV
+      candidate_id  daily_spearman_mean  days_evaluated  daily_spearman_selection_score  selection_days_evaluated  constant_prediction_dates     rmse      mae        r2  pearson_correlation  top_5_average_realized_return  top_10_average_realized_return  top_20_average_realized_return  top_5_hit_rate  top_10_hit_rate  top_20_hit_rate  param_objective param_eval_metric  param_n_estimators  param_learning_rate  param_max_depth  param_min_child_weight  param_subsample  param_colsample_bytree  param_gamma  param_reg_alpha  param_reg_lambda  param_max_delta_step param_tree_method  param_n_jobs
+          TUNE_012             0.011068             521                        0.011068                       521                          0 0.024620 0.014701 -0.091799             0.011577                       0.002327                        0.002106                        0.001836        0.510557         0.517658         0.523417 reg:squarederror              rmse                 500                 0.05                4                       1             0.70                    0.85         0.00            0.001               5.0                   0.0              hist            -1
+E0_BASELINE_PARAMS             0.007932             521                        0.007932                       521                          0 0.024857 0.014694 -0.112916             0.012647                       0.001541                        0.001469                        0.001340        0.509789         0.509405         0.517850 reg:squarederror              rmse                 300                 0.05                6                       1             1.00                    1.00         0.00            0.000               1.0                   0.0              hist            -1
+          TUNE_004             0.009346             212                        0.003803                       521                        309 0.023572 0.013477 -0.000810             0.024791                      -0.001292                       -0.001056                       -0.000925        0.447170         0.457547         0.468868 reg:squarederror              rmse                 200                 0.03                6                       1             1.00                    0.85         0.05            0.001               1.0                   0.0              hist            -1
+          TUNE_001                  NaN               0                        0.000000                       521                        521 0.023557 0.013453  0.000478             0.024842                            NaN                             NaN                             NaN             NaN              NaN              NaN reg:squarederror              rmse                 200                 0.03                5                       1             1.00                    0.85         0.10            0.100               1.0                   0.0              hist            -1
+          TUNE_007                  NaN               0                        0.000000                       521                        521 0.023564 0.013457 -0.000112             0.012597                            NaN                             NaN                             NaN             NaN              NaN              NaN reg:squarederror              rmse                 200                 0.08                4                       5             0.85                    1.00         0.10            1.000               3.0                   0.0              hist            -1
+
+SELECTED CANDIDATE — OUTER VALIDATION CHECK (DO NOT RETUNE AGAINST THIS RESULT)
+Candidate ID: TUNE_012
+{
+  "regression": {
+    "rmse": 0.0383790304456159,
+    "mae": 0.012476322153137938,
+    "r2": -0.018479883356336213,
+    "pearson_correlation": 0.008006190483386678
+  },
+  "ranking": {
+    "daily_spearman_mean": 0.0028673337132738294,
+    "days_evaluated": 186,
+    "daily_spearman_selection_score": 0.0028673337132738294,
+    "selection_days_evaluated": 186,
+    "unrankable_dates": 0,
+    "constant_prediction_dates": 0,
+    "top_k_average_realized_return": {
+      "5": 0.0006438286191392658,
+      "10": 0.003311454086738899,
+      "20": 0.002039090212584353
+    },
+    "top_k_hit_rate": {
+      "5": 0.5279569892473119,
+      "10": 0.5327956989247312,
+      "20": 0.517741935483871
+    }
+  }
+}
+
+Interpretation: the selected candidate is only the top result under this predefined CV rule. Compare it with the existing baseline and robustness findings; do not infer profitability from these metrics alone.

@@ -1,0 +1,37 @@
+====================================================================================================
+DAY-1 CONTROLLED FEATURE ABLATION RESULTS
+====================================================================================================
+
+Train rows: 78,194
+Validation rows: 17,283
+E0 features: 90
+Test partition loaded: NO
+Existing E0 baseline predictions reused: YES
+Threshold tuning: NO
+Hyperparameter tuning: NO
+
+EXPERIMENT FEATURE COUNTS
+E0: 90 — Existing 90-feature baseline; existing saved validation predictions reused
+E1: 24 — Original 24-feature technical baseline
+E2: 85 — E0 without cross-sectional rank features
+E3: 70 — E0 without market/NIFTY context features
+E4: 80 — E0 without price-action features
+E5: 55 — E0 without momentum/trend features
+E6: 70 — E0 without volatility/liquidity features
+
+VALIDATION METRICS
+experiment                                                                description  feature_count  regression_rmse  regression_mae  regression_r2  regression_pearson  classification_accuracy  classification_precision  classification_recall  classification_f1  classification_roc_auc  classification_pr_auc  classification_log_loss  daily_spearman_mean  ranking_days_evaluated  top_5_average_realized_return  top_10_average_realized_return  top_20_average_realized_return  top_5_hit_rate  top_10_hit_rate  top_20_hit_rate
+        E0 Existing 90-feature baseline; existing saved validation predictions reused             90         0.038878        0.012693      -0.045148            0.016792                 0.519412                  0.526226               0.591094           0.556777                0.517130               0.525847                 0.707205             0.006213                     186                       0.001484                        0.001164                        0.002182        0.549462         0.527419         0.512366
+        E1                                     Original 24-feature technical baseline             24         0.038588        0.012738      -0.029620            0.025492                 0.500897                  0.510354               0.558464           0.533326                0.506079               0.519047                 0.717399             0.009596                     186                       0.000305                        0.000838                        0.000562        0.526882         0.532796         0.514516
+        E2                                   E0 without cross-sectional rank features             85         0.039133        0.012829      -0.058898            0.017206                 0.511196                  0.519412               0.572966           0.544877                0.519892               0.528076                 0.705714             0.010952                     186                       0.000820                        0.000932                        0.001186        0.529032         0.517742         0.522849
+        E3                                   E0 without market/NIFTY context features             70         0.038863        0.012343      -0.044328            0.008892                 0.515825                  0.523944               0.567754           0.544970                0.518001               0.524899                 0.697477             0.022573                     186                       0.000716                        0.000873                        0.002173        0.502151         0.513441         0.528495
+        E4                                           E0 without price-action features             80         0.038889        0.012688      -0.045736            0.024365                 0.520917                  0.527148               0.600612           0.561487                0.526206               0.531350                 0.704408             0.014818                     186                       0.001371                        0.001188                        0.002075        0.518280         0.517742         0.512097
+        E5                                         E0 without momentum/trend features             55         0.038525        0.012578      -0.026234            0.026987                 0.512642                  0.520792               0.571833           0.545121                0.517033               0.523879                 0.704728             0.004300                     186                       0.001018                        0.000312                        0.001945        0.520430         0.511828         0.513172
+        E6                                   E0 without volatility/liquidity features             70         0.038484        0.012410      -0.024050            0.025674                 0.527165                  0.534155               0.579424           0.555870                0.531063               0.532299                 0.701372             0.008111                     186                       0.000603                        0.000537                        0.001061        0.511828         0.511290         0.521774
+
+INTERPRETATION NOTE
+Compare ablations against E0 using identical splits, targets, model parameters, and metrics.
+Do not interpret a small metric difference as meaningful without assessing stability.
+Top-K returns are gross realized returns, not evidence of post-cost profitability.
+E7 is deferred because the current E0 inventory has no validated sector-relative feature set.
+The final test partition remains sealed until feature/configuration choices are frozen.

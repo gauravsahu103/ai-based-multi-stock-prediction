@@ -1,0 +1,29 @@
+{
+  "candidate_id": "TUNE_012",
+  "evaluation_partition": "validation",
+  "test_used": false,
+  "regression": {
+    "rmse": 0.0383790304456159,
+    "mae": 0.012476322153137938,
+    "r2": -0.018479883356336213,
+    "pearson_correlation": 0.008006190483386678
+  },
+  "ranking": {
+    "daily_spearman_mean": 0.0028673337132738294,
+    "days_evaluated": 186,
+    "daily_spearman_selection_score": 0.0028673337132738294,
+    "selection_days_evaluated": 186,
+    "unrankable_dates": 0,
+    "constant_prediction_dates": 0,
+    "top_k_average_realized_return": {
+      "5": 0.0006438286191392658,
+      "10": 0.003311454086738899,
+      "20": 0.002039090212584353
+    },
+    "top_k_hit_rate": {
+      "5": 0.5279569892473119,
+      "10": 0.5327956989247312,
+      "20": 0.517741935483871
+    }
+  }
+}

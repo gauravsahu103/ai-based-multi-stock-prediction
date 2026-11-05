@@ -1,0 +1,52 @@
+PHASE 2.3 — DAY-1 BASELINE DIAGNOSTICS
+======================================================================
+Train + validation only. Test partition not loaded.
+No model fitting, tuning, threshold optimization, or feature selection.
+Train rows: 78,194
+Validation rows: 17,283
+Prediction rows: 17,283
+E0 features: 90
+Pearson: 0.0167923331383685
+Spearman: 0.009186849789301746
+Direction accuracy at fixed 0.5: 0.519412
+
+Highest-MAE stocks:
+SHRIRAMFIN: MAE=0.038797; Pearson=0.06031935366213656; rows=186
+SOLARINDS: MAE=0.027463; Pearson=-0.02135473104181136; rows=186
+MARUTI: MAE=0.023483; Pearson=0.01453162635012639; rows=186
+TMCV: MAE=0.023376; Pearson=-0.26725124398007677; rows=14
+ADANIPOWER: MAE=0.020798; Pearson=0.11707825050978256; rows=186
+MAZDOCK: MAE=0.018820; Pearson=0.03180815080967991; rows=186
+BAJFINANCE: MAE=0.018421; Pearson=0.03291429744980027; rows=186
+MOTHERSON: MAE=0.017858; Pearson=0.06668664927710675; rows=186
+ADANIGREEN: MAE=0.017310; Pearson=-0.020125105624498506; rows=186
+BAJAJHLDNG: MAE=0.017159; Pearson=-0.07802328039428257; rows=186
+
+Lowest daily Spearman dates:
+2025-05-05: Spearman=-0.542253; stocks=92
+2025-04-17: Spearman=-0.313657; stocks=92
+2025-09-05: Spearman=-0.311271; stocks=93
+2025-10-21: Spearman=-0.300972; stocks=94
+2025-12-15: Spearman=-0.292455; stocks=95
+2025-03-19: Spearman=-0.271134; stocks=92
+2025-06-19: Spearman=-0.270687; stocks=92
+2025-05-21: Spearman=-0.266911; stocks=92
+2025-03-24: Spearman=-0.258974; stocks=92
+2025-03-27: Spearman=-0.214972; stocks=92
+
+Highest validation feature missingness:
+close_vs_sma200: train=23.29%; validation=1.56%
+sma50_vs_sma200: train=23.29%; validation=1.56%
+rsi_7: train=1.83%; validation=1.10%
+close_vs_sma100: train=11.65%; validation=0.91%
+rolling_beta_60d: train=7.06%; validation=0.68%
+volatility_60d: train=7.06%; validation=0.68%
+volatility_ratio_20_60: train=7.06%; validation=0.68%
+volume_ratio_60d: train=6.94%; validation=0.68%
+ema50_slope: train=6.35%; validation=0.65%
+sma50_slope: train=6.35%; validation=0.65%
+close_vs_sma50: train=5.76%; validation=0.62%
+sma20_vs_sma50: train=5.76%; validation=0.62%
+sma_50: train=5.76%; validation=0.62%
+trend_strength_score: train=5.76%; validation=0.62%
+macd_histogram: train=3.88%; validation=0.46%

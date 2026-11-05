@@ -48,3 +48,40 @@ logs/
 # Temporary
 *.tmp
 *.temp
+
+
+# Generated model artifacts
+data/models/
+*.pt
+*.pth
+*.h5
+*.keras
+*.onnx
+
+# Large evaluation artifacts
+data/evaluation/**/*.parquet
+data/evaluation/**/*.zip
+
+# Temporary and backup files
+*.bak
+*.bak*
+*.tmp
+*.temp
+
+# Python cache (all nested directories)
+**/__pycache__/
+
+# Generated model artifacts
+data/models/
+*.pt
+*.pth
+*.h5
+*.keras
+
+# Large evaluation artifacts
+data/evaluation/**/*.parquet
+data/evaluation/**/*.zip
+
+# Backup files
+*.bak
+*.bak*

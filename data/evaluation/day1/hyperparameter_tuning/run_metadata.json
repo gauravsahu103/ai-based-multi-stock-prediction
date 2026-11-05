@@ -1,0 +1,18 @@
+{
+  "experiment": "day1_xgboost_hyperparameter_tuning",
+  "generated_at_utc": "2026-10-25T11:03:49.528804+00:00",
+  "baseline_config": "config/day1.yaml",
+  "tuning_config": "/Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/config/day1_tuning.yaml",
+  "feature_set": "E0",
+  "feature_count": 90,
+  "train_rows": 78194,
+  "train_unique_dates": 867,
+  "validation_rows": 17283,
+  "candidate_count": 17,
+  "fold_count": 3,
+  "folds_use_chronological_train_only_dates": true,
+  "selection_metric": "daily_spearman_selection_score",
+  "test_used": false,
+  "xgboost_version": "3.4.1",
+  "selected_candidate_id": "TUNE_012"
+}

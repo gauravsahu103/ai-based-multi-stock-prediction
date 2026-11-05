@@ -1,0 +1,196 @@
+DAY-1 FINAL SUBMISSION EVIDENCE SUMMARY
+=======================================
+Prediction horizon: one NSE trading session ahead (T close to next NSE session close).
+Final candidate frozen before test evaluation: E0_BASELINE / E0
+Test data used for model selection: NO; test was evaluated only after the freeze manifest was written.
+
+FROZEN PARTITION MANIFEST
+{
+  "frozen_at_utc": "2026-10-27T12:03:22.514574+00:00",
+  "prediction_horizon_sessions": 1,
+  "split_policy": "Freeze and retain the already-trained model's existing chronological train/validation/test Parquet partitions; do not rebuild to the previously planned 65/15/20 split late in the study. Record actual date cutoffs and row/date counts. The test partition is not used to choose the model or features.",
+  "model_choice": {
+    "model": "E0_BASELINE",
+    "feature_set": "E0",
+    "prediction_horizon_sessions": 1,
+    "reason": "E0 remains the frozen reference. E0-E6 and TUNE_012 did not establish a consistently superior ranking result on validation; TUNE_012's validation Rank IC and Top-5 return were below E0 despite improved regression errors. Final test is used once for confirmation, not selection.",
+    "test_opened_before_freeze": false
+  },
+  "partitions_before_test_open": [
+    {
+      "partition": "train",
+      "path": "/Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/data/processed/modeling/day1/train.parquet",
+      "sha256": "fd8a997408063d44fb6ee5de9c6ca5dbd046523456f4779d304689df97f4860b",
+      "rows": 78194,
+      "unique_stocks": 92,
+      "unique_dates": 867,
+      "min_date": "2021-09-20T00:00:00",
+      "max_date": "2025-03-13T00:00:00",
+      "duplicate_symbol_date_rows": 0,
+      "positive_target_prevalence": 0.5125712970304627
+    },
+    {
+      "partition": "validation",
+      "path": "/Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/data/processed/modeling/day1/validation.parquet",
+      "sha256": "0320841e39b09f916aa56238c2dc8b1f0be5e0079ab8608207b73bb52defea4f",
+      "rows": 17283,
+      "unique_stocks": 95,
+      "unique_dates": 186,
+      "min_date": "2025-03-17T00:00:00",
+      "max_date": "2025-12-15T00:00:00",
+      "duplicate_symbol_date_rows": 0,
+      "positive_target_prevalence": 0.5106752299947925
+    }
+  ],
+  "pending_test_partition_path": "/Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/data/processed/modeling/day1/test.parquet",
+  "feature_inventory_path": "/Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/data/evaluation/day1/feature_inventory.json",
+  "feature_inventory_sha256": "1408549563220564474bebc9bcd44f4948dd9d5ef75be52bce86cf0a0b069d0d",
+  "E0_regression_model_path": "/Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/data/models/day1/xgboost_baseline/baseline_regression_model.json",
+  "E0_classification_model_path": "/Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/data/models/day1/xgboost_baseline/baseline_classification_model.json",
+  "note": "E0 model/feature choice is frozen using pre-existing validation evidence before test file is opened. The existing split is retained rather than replaced with new boundaries late in the analysis.",
+  "partitions_after_final_test_open": [
+    {
+      "partition": "train",
+      "path": "/Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/data/processed/modeling/day1/train.parquet",
+      "sha256": "fd8a997408063d44fb6ee5de9c6ca5dbd046523456f4779d304689df97f4860b",
+      "rows": 78194,
+      "unique_stocks": 92,
+      "unique_dates": 867,
+      "min_date": "2021-09-20T00:00:00",
+      "max_date": "2025-03-13T00:00:00",
+      "duplicate_symbol_date_rows": 0,
+      "positive_target_prevalence": 0.5125712970304627
+    },
+    {
+      "partition": "validation",
+      "path": "/Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/data/processed/modeling/day1/validation.parquet",
+      "sha256": "0320841e39b09f916aa56238c2dc8b1f0be5e0079ab8608207b73bb52defea4f",
+      "rows": 17283,
+      "unique_stocks": 95,
+      "unique_dates": 186,
+      "min_date": "2025-03-17T00:00:00",
+      "max_date": "2025-12-15T00:00:00",
+      "duplicate_symbol_date_rows": 0,
+      "positive_target_prevalence": 0.5106752299947925
+    },
+    {
+      "partition": "test",
+      "path": "/Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/data/processed/modeling/day1/test.parquet",
+      "sha256": "9ba3060c801719e50dfc38b35f8674bd7650ec5971f6eac5c49eb15fe01ca291",
+      "rows": 17670,
+      "unique_stocks": 95,
+      "unique_dates": 186,
+      "min_date": "2025-12-16T00:00:00",
+      "max_date": "2026-09-16T00:00:00",
+      "duplicate_symbol_date_rows": 0,
+      "positive_target_prevalence": 0.49207696661007355
+    }
+  ],
+  "final_test_opened_after_freeze": true,
+  "final_test_sha256": "9ba3060c801719e50dfc38b35f8674bd7650ec5971f6eac5c49eb15fe01ca291"
+}
+
+EDA SUMMARY
+{
+  "feature_count": 90,
+  "formula_review_count": 0,
+  "top_target_correlations": {
+    "high_low_range_pct": 0.042907491917713335,
+    "body_pct": 0.036190880418066965,
+    "lower_wick_pct": 0.028379973806275466,
+    "deliverable_qty": 0.023003468300296995,
+    "volume_ratio_60d": 0.021980815407180162,
+    "volume_ratio_10d": 0.0209436236178114,
+    "volume_ratio_5d": 0.02084366985014514,
+    "market_momentum_regime": 0.020417073227670304,
+    "nifty50_return_20d": 0.020417073227670304,
+    "volume_ratio_20d": 0.019150678352667067
+  },
+  "feature_missingness_file": "feature_missingness_by_partition.csv",
+  "feature_outliers_method": "Tukey 1.5*IQR bounds derived from train features, counted separately in each partition"
+}
+
+FEATURE FORMULA CATALOG QA
+Feature inventory count: 90
+Formula review rows remaining: 0
+If formula review rows remain, trace those exact names to the versioned generator before claiming a complete formula inventory.
+
+VALIDATION ANOMALY DIAGNOSTICS (NOT USED FOR MODEL SELECTION)
+{
+  "validation_dates": 186,
+  "weakest_rank_ic_date": "2025-05-05T00:00:00",
+  "weakest_rank_ic": -0.5422529784381116,
+  "largest_error_rows_exported": 100,
+  "outlier_rows_are_removed": false
+}
+
+FINAL TEST METRICS (E0, evaluated once)
+{
+  "regression": {
+    "model": "E0_BASELINE",
+    "horizon_sessions": 1,
+    "rows": 17670,
+    "dates": 186,
+    "stocks": 95,
+    "model_rmse": 0.022911106470154482,
+    "zero_return_rmse": 0.0211544583848865,
+    "model_mae": 0.014679782412396737,
+    "zero_return_mae": 0.013758432413843833,
+    "model_r2": -0.17298300666910094,
+    "model_pearson": 0.027529039535218302,
+    "interpretation": "Error comparisons are descriptive; lower is better. No profitability claim is implied."
+  },
+  "classification": {
+    "positive_class_prevalence_from_training": 0.5125712970304627,
+    "rows": 17670,
+    "dates": 186,
+    "model_threshold_fixed_at": 0.5,
+    "model_accuracy": 0.4933220147142049,
+    "model_precision": 0.4868205966489579,
+    "model_recall": 0.5480161012075906,
+    "model_f1": 0.5156089379429746,
+    "model_roc_auc": 0.5007088439710973,
+    "model_pr_auc_average_precision": 0.5080926872252375,
+    "model_brier_score": 0.26675590034792235,
+    "prevalence_baseline_brier_score": 0.2503572431212822,
+    "model_log_loss": 0.7347207672408665,
+    "prevalence_baseline_log_loss": 0.6938618507317957,
+    "prevalence_baseline_probability_is_constant": true,
+    "note": "Prevalence probability is estimated only from training labels; threshold fixed at 0.5 for model classifications. Lower Brier/log loss is better."
+  },
+  "ranking": {
+    "horizon_sessions": 1,
+    "model_rank_signal": "E0 predicted_return_1d",
+    "reference_rank_signal": "lagged return_5d feature (trailing five-session return); outcome remains target_return_1d",
+    "dates": 186,
+    "eligible_dates_with_momentum_reference": 186,
+    "stocks": 95,
+    "eligible_stock_date_rows_for_matched_ranking": 17670,
+    "stock_date_rows_missing_momentum_reference": 0,
+    "model_daily_spearman_mean": 0.002177697023778231,
+    "model_daily_spearman_dates": 186,
+    "momentum_reference_daily_spearman_mean": -0.01015558217978213,
+    "momentum_reference_daily_spearman_dates": 186,
+    "model_top5_return": 0.001042439982798615,
+    "momentum_top5_return": -4.8905828220300956e-05,
+    "model_top5_hit": 0.5021505376344086,
+    "momentum_top5_hit": 0.48924731182795705,
+    "model_top10_return": 0.0005349058437969682,
+    "momentum_top10_return": 0.00042789501167563005,
+    "model_top10_hit": 0.49677419354838714,
+    "momentum_top10_hit": 0.4887096774193549,
+    "model_top20_return": 0.0005231657415867584,
+    "momentum_top20_return": 0.00016314065324877938,
+    "model_top20_hit": 0.4932795698924731,
+    "momentum_top20_hit": 0.48306451612903223
+  },
+  "paired_ci_rows": 12
+}
+
+INTERPRETATION GUARDRAILS
+1. The trailing-five-session momentum feature is a reference ranking signal only; the supervised target remains one session ahead.
+2. Tukey flags are statistical outlier indicators, not proof of erroneous records; no rows were removed.
+3. Bootstrap intervals are nominal and unadjusted for the number of metrics examined.
+4. Top-K returns are gross close-to-close returns, not evidence of profitability after fees, slippage, turnover, liquidity, and portfolio constraints.
+5. The current constituent cohort is not a reconstructed historical NIFTY 100 constituent universe; conclusions are restricted to the frozen current-constituent cohort.
+6. Do not revise model/features after viewing final test metrics. If any data issue is found on test, disclose it and do not silently change the test set or model.

@@ -1,0 +1,30 @@
+# ---------------------------------------------------------------------------
+# Day-1 temporary eligibility exclusions
+# ---------------------------------------------------------------------------
+# These securities remain part of the underlying NIFTY-100 universe snapshot.
+# They are excluded only from the Day-1 canonical price/modeling pipeline
+# until the unresolved corporate actions can be handled with an explicit,
+# validated adjustment policy.
+#
+# Current exclusions:
+# GRASIM      -> Rights issue (6:179)
+# HINDUNILVR  -> Demerger
+# INDHOTEL    -> Rights issue (1:9)
+# ITC         -> Demerger
+# SIEMENS     -> Demerger
+#
+# Revisit this list when the corporate-action treatment is implemented and
+# validated. Do not silently remove the symbols from the permanent universe.
+day1:
+  excluded_symbols:
+    - GRASIM
+    - HINDUNILVR
+    - INDHOTEL
+    - ITC
+    - SIEMENS
+
+  exclusion_note: >
+    Temporarily excluded from the Day-1 MVP because the current canonical
+    price adjustment engine does not yet support their unresolved complex
+    corporate actions (rights issues / demergers). Re-enable only after
+    explicit adjustment logic and reconciliation have been validated.

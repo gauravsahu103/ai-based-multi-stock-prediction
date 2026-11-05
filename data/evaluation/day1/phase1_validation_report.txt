@@ -1,0 +1,72 @@
+==========================================================================================
+PHASE 1B - DAY-1 DATASET VALIDATION REPORT
+==========================================================================================
+
+Architecture: technical features + generated Day-1 target -> final Day-1 modeling dataset
+Prediction horizon: T -> next available trading day T+1
+
+PATHS
+------------------------------------------------------------------------------------------
+Feature directory : /Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/data/features/day1/technical_v2
+Target directory  : /Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/data/targets/day1
+Modeling directory: /Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/data/processed/modeling/day1
+
+DATASET
+------------------------------------------------------------------------------------------
+Rows assembled          : 114,785
+Training-ready rows     : 114,685
+Stocks                  : 100
+Feature columns         : 83
+Date range              : 2021-09-20 -> 2026-09-17
+
+BASELINE FEATURE CHECK
+------------------------------------------------------------------------------------------
+[PASS]
+
+TARGET VALIDATION
+------------------------------------------------------------------------------------------
+[PASS]
+
+T -> T+1 TARGET SEMANTICS
+------------------------------------------------------------------------------------------
+[PASS]
+
+NUMERIC VALUE CHECK
+------------------------------------------------------------------------------------------
+[PASS]
+
+LEAKAGE CHECK
+------------------------------------------------------------------------------------------
+[PASS]
+
+CROSS-SECTIONAL RANK CHECK
+------------------------------------------------------------------------------------------
+[PASS]
+
+CHRONOLOGICAL SPLIT CHECK
+------------------------------------------------------------------------------------------
+[PASS]
+
+SPLIT SUMMARY
+------------------------------------------------------------------------------------------
+TRAIN: rows=78,275, stocks=94, dates=2021-09-20 -> 2025-03-13
+VALIDATION: rows=17,861, stocks=99, dates=2025-03-17 -> 2025-12-15
+TEST: rows=18,549, stocks=100, dates=2025-12-16 -> 2026-09-16
+
+FEATURE NULL / DISTRIBUTION REVIEW
+------------------------------------------------------------------------------------------
+Features with >30% null : 0
+Features with infinity  : 0
+
+TARGET SUMMARY
+------------------------------------------------------------------------------------------
+Valid target rows       : 114,685
+Mean target return      : 0.00061120
+Median target return    : 0.00034174
+Positive direction rate : 50.9500%
+
+OVERALL PHASE 1B STATUS
+------------------------------------------------------------------------------------------
+[PASS]
+All automated Phase 1B structural, target, T+1, numeric, leakage and split checks passed.
+Feature null/distribution statistics should still be reviewed before model training.

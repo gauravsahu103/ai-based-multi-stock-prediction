@@ -1,0 +1,18 @@
+================================================================================
+PRICE CANONICAL RECONCILIATION
+================================================================================
+Raw price files (universe candidates): 100
+Day-1 selected price files: 95
+Day-1 excluded symbols: 5
+Corporate action records considered: 326
+
+DAY-1 EXCLUSION NOTE
+--------------------------------------------------------------------------------
+Temporarily excluded from the Day-1 MVP because the current canonical price adjustment engine does not yet support their unresolved complex corporate actions (rights issues / demergers). Re-enable only after explicit adjustment logic and reconciliation have been validated.
+Excluded symbols: GRASIM, HINDUNILVR, INDHOTEL, ITC, SIEMENS
+Adjusted split/bonus events: 11
+Complex events requiring review: 0
+
+COMPLEX EVENTS
+--------------------------------------------------------------------------------
+None.

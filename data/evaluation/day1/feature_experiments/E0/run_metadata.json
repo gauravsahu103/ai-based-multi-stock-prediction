@@ -1,0 +1,22 @@
+{
+  "experiment_suite": "day1_xgboost_feature_ablation",
+  "experiment": "E0",
+  "description": "Existing 90-feature baseline; existing saved validation predictions reused",
+  "horizon": 1,
+  "feature_count": 90,
+  "train_rows": 78194,
+  "validation_rows": 17283,
+  "test_used": false,
+  "existing_baseline_predictions_reused": true,
+  "model_retrained_by_experiment_runner": false,
+  "config_file": "config/day1.yaml",
+  "input_sha256": {
+    "train_parquet": "fd8a997408063d44fb6ee5de9c6ca5dbd046523456f4779d304689df97f4860b",
+    "validation_parquet": "0320841e39b09f916aa56238c2dc8b1f0be5e0079ab8608207b73bb52defea4f",
+    "feature_inventory": "1408549563220564474bebc9bcd44f4948dd9d5ef75be52bce86cf0a0b069d0d",
+    "config": "1d25dbf7ddb89af82622f51faf7b90e94cc019d332039c00b1a2d8339221d9f2",
+    "e0_validation_predictions": "fcb1abd7105e679403e7fb734eef73015520d2f4fee874f7f688bd9a940b2c4a"
+  },
+  "generated_at_utc": "2026-10-10T03:40:02.689867+00:00",
+  "prediction_file": "/Users/gauravsahu/Documents/ML_AI/StockPrediction/Project/data/predictions/day1/validation_predictions.parquet"
+}
